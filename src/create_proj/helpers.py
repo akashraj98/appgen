@@ -4,36 +4,35 @@ import random
 import string
 import shutil
 
-from create_proj.models import BackEndChoices
+from create_proj.models import BackEndChoices, FrontEndChoices
 
 
-def create_django_project(database):
+def create_django_angular_project(database):
     """."""
 
-    dj_parent_dir = pathlib.Path.cwd().parent.parent
     proj_name = ''.join(random.choices(string.ascii_lowercase, k=10))
+    parent_dir = pathlib.Path.cwd().parent.parent / proj_name
     db_name = ''.join(random.choices(string.ascii_lowercase, k=10))
-    dj_dir = dj_parent_dir / proj_name
     cmd = f"""
-    mkdir {dj_dir}
-    cd {dj_dir}
+    mkdir -p {parent_dir}
+    cd {parent_dir}
     echo "db_name={db_name} db_type={database}" > README.md
     python3 -m venv venv
     . venv/bin/activate
     pip install django djangorestframework
-    django-admin startproject {proj_name}
-    mv {proj_name} src
+    django-admin startproject backend
+    ng new frontend --defaults --skip-install=true
     """
     subprocess.check_output(cmd, shell=True)
-    venv_path = dj_dir / 'venv'
+    venv_path = parent_dir / 'venv'
     shutil.rmtree(venv_path)
-    zip = shutil.make_archive(proj_name, 'zip', f'{dj_dir}')
-    shutil.rmtree(f'{dj_dir}')
+    zip = shutil.make_archive(proj_name, 'zip', f'{parent_dir}')
+    shutil.rmtree(f'{parent_dir}')
     return pathlib.Path(zip)
 
 
 def create_project_archive(backend, frontend, database):
     """."""
 
-    if backend == BackEndChoices.DJANGO.value:
-        return create_django_project(database)
+    if backend == BackEndChoices.DJANGO.value and frontend == FrontEndChoices.ANGULAR.value:
+        return create_django_angular_project(database)
