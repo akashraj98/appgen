@@ -1,0 +1,44 @@
+input {
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    border-radius: 5px;
+    background-color: green;
+    color: white;
+    font-size: 1rem;
+    padding: 1rem;
+    margin: 0 1rem 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(53, 155, 53);
+}
+
+button.view-users {
+    background-color: rgb(35, 118, 213);
+}
+
+button.view-users:hover {
+    background-color: rgb(84, 133, 190);
+}
+
+table {
+    display: inline-table
+}
+
+table th {
+    border: 2px solid
+}
+
+table td {
+    padding: 1rem;
+    border: 1px solid;
+}
