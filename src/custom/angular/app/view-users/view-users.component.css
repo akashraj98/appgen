@@ -1,0 +1,32 @@
+.card {
+    border: 3px solid;
+    padding: 1rem;
+    margin: 1rem;
+    border-color: black;
+    color: beige
+}
+
+.container {
+    display: flex;
+}
+
+.card.header {
+    color: #3f3fbc;
+    background-color: #e2e0e0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+button {
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin: 1rem;
+    border-color: #cf8905;
+    cursor: pointer;
+    background-color: #e4c2a3;
+
+}
+
+button:hover {
+    background-color: #ebdaca;
+}

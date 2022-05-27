@@ -1,0 +1,11 @@
+<form #myForm="ngForm" (ngSubmit)="submit(myForm)"novalidate>
+  <div class="input-container">
+    <input type='text'  placeholder="Enter UserId"  name="userName" ngModel>
+    <input type='text'  placeholder="Enter First Name" name="firstName" ngModel>
+    <input type='text' placeholder="Enter Last Name" ngModel name="lastName" >
+  </div>
+  <button type="submit">Submit</button>
+  <button class="view-users" (click)="navigateToUsers()">Show Users</button>
+</form>
+<router-outlet></router-outlet>
+
