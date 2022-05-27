@@ -5,6 +5,7 @@ class BackEndChoices(models.TextChoices):
     """."""
 
     DJANGO = "django", "Django"
+    FLASK  = "flask" , "Flask"
     SPRING = "spring", "Spring"
     ASP_DOT_NET = "asp.net", "Asp.net"
     NODE_JS = "node.js", "Node.js"
