@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
     firstName: string,
     lastName: string
   }
-  postUrl = 'http://localhost:4200/'
+  postUrl = '/api/postdata';
 
   ngOnInit(): void {
 
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
       firstName: userData.form.controls.firstName.value,
       lastName: userData.form.controls.lastName.value
     };
-    this._http.post(this.postUrl, body);
+    this._http.post(this.postUrl, JSON.stringify(body), { headers: { 'Content-Type': 'application/json' } }).subscribe();
   }
   navigateToUsers() {
     this._router.navigate(['view-users'], { relativeTo: this._activatedRoute })
